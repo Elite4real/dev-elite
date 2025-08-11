@@ -38,7 +38,7 @@ export default function Skills() {
   const [view, setView] = useState<ViewMode>("bars");
   const [sortBy, setSortBy] = useState<SortMode>("level");
 
-  // Flatten skills for GRID view and for "All" sorting
+  // Flatten skills for GRID view and for  "All" sorting
   const flatSkills = useMemo(
     () =>
       stacks.flatMap((s) =>
