@@ -22,12 +22,12 @@ type Floater = {
 };
 
 const FLOATERS: Floater[] = [
-  { Icon: SiLaravel,     alt: "Laravel",  color: "#FF2D20", x: 8,  y: 16, dur: 4.2 },
-  { Icon: SiNextdotjs,   alt: "Next.js",  x: 90, y: 18, dur: 4.8, rev: true },
+  { Icon: SiLaravel,     alt: "Laravel",  color: "#FF2D20", x: 6,  y: 18, dur: 4.2 },
+  { Icon: SiNextdotjs,   alt: "Next.js",  x: 88, y: 20, dur: 4.8, rev: true },
   { Icon: SiReact,       alt: "React",    color: "#61DAFB", x: 12, y: 82, dur: 5.0 },
-  { Icon: SiExpo,        alt: "Expo",     x: 88, y: 78, dur: 4.4, rev: true },
-  { Icon: SiTailwindcss, alt: "Tailwind", color: "#38BDF8", x: 50, y: 8,  dur: 5.2 },
-  { Icon: SiMysql, alt: "Mysql", color: "#38BDF8", x: 50, y: 8,  dur: 5.2 },
+  { Icon: SiExpo,        alt: "Expo",     x: 86, y: 78, dur: 4.4, rev: true },
+  { Icon: SiTailwindcss, alt: "Tailwind", color: "#38BDF8", x: 48, y: 8,  dur: 5.2 },
+  { Icon: SiMysql,       alt: "MySQL",    color: "#00618A", x: 50, y: 86, dur: 5.4, rev: true },
 ];
 
 function FloatingIcon({ Icon, alt, color, x, y, dur = 5, rev }: Floater) {
@@ -35,7 +35,7 @@ function FloatingIcon({ Icon, alt, color, x, y, dur = 5, rev }: Floater) {
     <motion.div
       className="pointer-events-none hidden lg:flex absolute items-center justify-center h-12 w-12 xl:h-14 xl:w-14 rounded-2xl ring-gradient p-2 bg-white/80 dark:bg-neutral-900/70 backdrop-blur shadow-[0_10px_30px_rgba(0,0,0,0.08)]"
       style={{ top: `${y}%`, left: `${x}%` }}
-      animate={{ y: [0, rev ? -10 : 10, 0], rotate: [0, rev ? -2 : 2, 0] }}
+      animate={{ y: [0, rev ? -10 : 10, 0], rotate: [0, rev ? -2 : 2, 0], scale: [1, 1.03, 1] }}
       transition={{ duration: dur, repeat: Infinity, ease: "easeInOut" }}
       aria-label={alt}
       title={alt}
@@ -64,6 +64,13 @@ export default function Hero() {
           }}
         />
 
+        {/* floaters */}
+        <div className="absolute inset-0">
+          {FLOATERS.map((f) => (
+            <FloatingIcon key={f.alt} {...f} />
+          ))}
+        </div>
+
         {/* content */}
         <div className="relative p-8 md:p-12 flex flex-col items-center text-center gap-5">
           {/* top accent */}
@@ -79,7 +86,6 @@ export default function Hero() {
               height={100}
               className="rounded-full absolute inset-0 m-auto object-cover"
               priority
-              sizes="100px"
             />
           </div>
 
@@ -95,21 +101,22 @@ export default function Hero() {
                        bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500
                        bg-clip-text text-transparent drop-shadow-[0_1px_0_rgba(255,255,255,0.6)] dark:drop-shadow-[0_1px_0_rgba(0,0,0,0.6)]"
           >
-            Full-stack developer building fast, delightful products with Laravel, Next.js & Expo.
+            Full‑stack developer building fast, delightful products with Laravel, Next.js & Expo.
           </h1>
 
           <p className="text-base md:text-lg text-neutral-700 dark:text-neutral-300 max-w-2xl">
-            I ship production-ready web and mobile experiences — clean code, strong DX, and measurable business impact.
+            I ship production‑ready web and mobile experiences — clean code, strong DX, and measurable business impact.
           </p>
 
           {/* tech icon row (icon pills) */}
-          <div className="flex flex-wrap items-center gap-2 md:gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3">
             {[
               { Icon: SiLaravel,     label: "Laravel",  color: "#FF2D20" },
               { Icon: SiNextdotjs,   label: "Next.js" },
               { Icon: SiReact,       label: "React",    color: "#61DAFB" },
               { Icon: SiExpo,        label: "Expo" },
               { Icon: SiTailwindcss, label: "Tailwind", color: "#38BDF8" },
+              { Icon: SiMysql,       label: "MySQL",    color: "#00618A" },
             ].map(({ Icon, label, color }) => (
               <span
                 key={label}
