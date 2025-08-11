@@ -8,6 +8,7 @@ import {
   SiReact,
   SiExpo,
   SiTailwindcss,
+  SiMysql,
 } from "react-icons/si";
 
 type Floater = {
@@ -26,6 +27,7 @@ const FLOATERS: Floater[] = [
   { Icon: SiReact,       alt: "React",    color: "#61DAFB", x: 12, y: 82, dur: 5.0 },
   { Icon: SiExpo,        alt: "Expo",     x: 88, y: 78, dur: 4.4, rev: true },
   { Icon: SiTailwindcss, alt: "Tailwind", color: "#38BDF8", x: 50, y: 8,  dur: 5.2 },
+  { Icon: SiMysql, alt: "Mysql", color: "#38BDF8", x: 50, y: 8,  dur: 5.2 },
 ];
 
 function FloatingIcon({ Icon, alt, color, x, y, dur = 5, rev }: Floater) {
