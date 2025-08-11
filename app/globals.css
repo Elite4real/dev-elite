@@ -1,26 +1,54 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* === Base theme variables (kept) === */
+:root { --background:#ffffff; --foreground:#171717; }
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
-
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  :root { --background:#0a0a0a; --foreground:#ededed; }
+}
+/* Dark mode via class for toggle (next-themes) */
+:root.dark { --background:#0a0a0a; --foreground:#ededed; }
+
+body { background:var(--background); color:var(--foreground); }
+
+/* === Page gradient === */
+.page-gradient{
+  background:
+    radial-gradient(1000px 600px at 10% -10%, rgba(108,99,255,.12), transparent 60%),
+    radial-gradient(800px 500px at 90% 0%, rgba(236,72,153,.10), transparent 55%),
+    radial-gradient(600px 400px at 50% 10%, rgba(20,184,166,.10), transparent 60%);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* === UI kit === */
+.container-narrow{ @apply max-w-6xl mx-auto px-4; }
+.card{ @apply rounded-2xl border border-neutral-200/70 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.06)]; }
+.dark .card{ @apply border-neutral-800/60 bg-neutral-900; }
+.card-hover{ @apply transition; } .card-hover:hover{ transform:translateY(-2px); box-shadow:0 20px 60px rgba(0,0,0,.10); }
+
+.badge{ @apply inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full bg-neutral-100 border border-neutral-200; }
+.dark .badge{ @apply bg-neutral-800 border-neutral-700; }
+
+.section-title{ @apply text-center text-[26px] md:text-[32px] font-semibold tracking-tight; }
+.section-sub{ @apply mt-2 text-center text-neutral-500 dark:text-neutral-400 max-w-2xl mx-auto; }
+
+.btn{ @apply inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-medium transition; }
+.btn-primary{ color:white; background:linear-gradient(90deg,#6C63FF,#E879F9); }
+.btn-primary:hover{ filter:brightness(.96); }
+.btn-ghost{ @apply bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700; }
+
+/* Gradient ring */
+.ring-gradient{ position:relative; }
+.ring-gradient::before{
+  content:""; position:absolute; inset:-2px; border-radius:inherit; padding:2px;
+  background:linear-gradient(90deg,#6C63FF,#EC4899,#14B8A6);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude;
 }
+
+/* Subtle dividers */
+.hr{ @apply h-px w-full bg-neutral-200/80 dark:bg-neutral-800/70; }
