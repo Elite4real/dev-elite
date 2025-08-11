@@ -13,19 +13,6 @@ export default function Navbar() {
         Dev<span className="text-[#6C63FF]">Elite</span>
         </Link>
 
-      {open && (
-        <div className="md:hidden border-t border-neutral-200 dark:border-neutral-800">
-          <div className="container-narrow py-3 flex flex-col gap-3 text-sm">
-            {links.map((id)=>(
-              <a key={id} onClick={()=>setOpen(false)} href={`#${id.toLowerCase()}`} className="py-1">
-                {id}
-              </a>
-            ))}
-            <ThemeToggle />
-            <a onClick={()=>setOpen(false)} href="#contact" className="btn btn-primary mt-2 w-fit">Hire me</a>
-          </div>
-        </div>
-      )}
         <nav className="hidden md:flex items-center gap-7 text-sm">
           {links.map((l)=>(
             <a key={l} href={`#${l.toLowerCase()}`} className="text-neutral-700 dark:text-neutral-300 hover:text-[#6C63FF]">
@@ -41,6 +28,19 @@ export default function Navbar() {
         </button>
       </div>
 
+      {open && (
+        <div className="md:hidden border-t border-neutral-200 dark:border-neutral-800">
+          <div className="container-narrow py-3 flex flex-col gap-3 text-sm">
+            {links.map((id)=>(
+              <a key={id} onClick={()=>setOpen(false)} href={`#${id.toLowerCase()}`} className="py-1">
+                {id}
+              </a>
+            ))}
+            <ThemeToggle />
+            <a onClick={()=>setOpen(false)} href="#contact" className="btn btn-primary mt-2 w-fit">Hire me</a>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
