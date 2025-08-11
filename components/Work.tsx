@@ -242,7 +242,7 @@ export default function Work() {
                       aria-label={`Open case study for ${p.title}`}
                       title="Read case study"
                     >
-                      Case study
+                     About Project
                     </Link>
                   </div>
                 </div>
