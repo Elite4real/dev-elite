@@ -21,7 +21,7 @@ const stacks: Stack[] = [
   ]},
 ];
 
-const FILTERS = ["All", "Backend", "Frontend", "Mobile", "Platform"] as const;
+const FILTERS = ["All", "Backend", "Frontend", "Mobile", ] as const;
 type Filter = typeof FILTERS[number];
 type ViewMode = "bars" | "grid";
 type SortMode = "level" | "name";
